@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Planeta.unity
     guid: 4558ee93ad55f0542abae27264249795
+  - enabled: 1
+    path: Assets/Scenes/Templo.unity
+    guid: 2daf501a92eb6a349be4b0fea76d05ee
   m_configObjects: {}
