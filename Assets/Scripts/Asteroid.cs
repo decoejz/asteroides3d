@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Asteroid : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Asteroid : MonoBehaviour
     private Color[] pix;    // pixels da imagem
     private Renderer rend;  // renderizador do objeto
     public Transform explosionPrefab;
+    private bool colidiu = false;
 
     void Start()
     {
@@ -69,13 +72,33 @@ public class Asteroid : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        print("ENTROU");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            int temp = PlayerPrefs.GetInt("Vidas", 0);
+            temp--;
+            if (temp < 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+            PlayerPrefs.SetInt("Vidas", temp);
+
+        }
+        if (collision.gameObject.CompareTag("Tiro"))
+        {
+            print("Deve printar os pontos na linha seguinte:");
+            int temp = PlayerPrefs.GetInt("Pontos", 0);
+            temp += 10;
+            print(temp);
+            PlayerPrefs.SetInt("Pontos", temp);
+            Destroy(collision.gameObject);
+            print("--------------------------");
+        }
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point;
         var instancia = Instantiate(explosionPrefab, pos, rot);
         Destroy(instancia.gameObject, 0.5f);
-        Destroy(collision.gameObject);
         Destroy(gameObject);
     }
-
 }
