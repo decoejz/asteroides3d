@@ -11,12 +11,6 @@ public class MainPage : MonoBehaviour
         PlayerPrefs.SetInt("Vidas", 3);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Iniciar()
     {
         SceneManager.LoadScene("Espaco");

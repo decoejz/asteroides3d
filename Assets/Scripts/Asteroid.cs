@@ -72,7 +72,6 @@ public class Asteroid : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print("ENTROU");
         if (collision.gameObject.CompareTag("Player"))
         {
             int temp = PlayerPrefs.GetInt("Vidas", 0);
@@ -86,13 +85,10 @@ public class Asteroid : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Tiro"))
         {
-            print("Deve printar os pontos na linha seguinte:");
             int temp = PlayerPrefs.GetInt("Pontos", 0);
             temp += 10;
-            print(temp);
             PlayerPrefs.SetInt("Pontos", temp);
             Destroy(collision.gameObject);
-            print("--------------------------");
         }
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
