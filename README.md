@@ -6,4 +6,4 @@ O código do jogo pode ser encontrado na [branch master](https://github.com/deco
 
 Os arquivos para execução do WebGL podem ser encontrados na [branch gh-pages](https://github.com/decoejz/asteroides3d/tree/gh-pages) deste projeto.
 
-Para jogar, basta clicar [aqui](https://decoejz.github.io/asteroides3d).
+Para jogar, basta clicar [aqui](https://decoejz.github.io/asteroides3d/).
